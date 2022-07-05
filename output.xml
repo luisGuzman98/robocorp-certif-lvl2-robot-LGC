@@ -1,40 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.7.5 on win32)" generated="20220702 12:45:44.682" rpa="false" schemaversion="3">
-<suite id="s1" name="Robot Interactive Console" source="c:\Users\luisg_0qtm\.vscode\extensions\robocorp.robotframework-lsp-0.48.2\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
-<test id="s1-t1" name="Default Task/Test" line="5">
-<kw name="Interpreter Main Loop" library="MainLoop">
-<kw name="Open Chrome Browser" library="RPA.Browser">
-<arg>https://robotsparebinindustries.com/#/robot-order</arg>
+<robot generator="Robot 5.0.1 (Python 3.7.5 on win32)" generated="20220705 11:18:36.706" rpa="true" schemaversion="3">
+<suite id="s1" name="Tasks" source="c:\Users\luisg_0qtm\projects\robocorp\robocorp-certif-lvl2-robot-LGC\tasks.robot">
+<test id="s1-t1" name="Order robots from RobotSpareBin Industries Inc" line="19">
+<kw name="Open the robot order website">
+<kw name="Get Secret" library="RPA.Robocorp.Vault">
+<var>${secret}</var>
+<arg>secret_name=robot_orders_url</arg>
+<doc>Read a secret from the configured source, e.g. Robocorp Vault,
+and return it as a ``Secret`` object.</doc>
+<msg timestamp="20220705 11:18:37.846" level="INFO">Protecting keyword: RPA.Robocorp.Vault.Get Secret</msg>
+<msg timestamp="20220705 11:18:37.847" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20220705 11:18:37.846" endtime="20220705 11:18:37.847"/>
+</kw>
+<kw name="Open Chrome Browser" library="RPA.Browser.Selenium">
+<arg>${secret}[url]</arg>
 <doc>Open Chrome browser. See ``Open Available Browser`` for
 descriptions of arguments.</doc>
-<status status="PASS" starttime="20220702 12:46:12.470" endtime="20220702 12:46:15.312"/>
+<msg timestamp="20220705 11:18:37.848" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20220705 11:18:37.868" level="INFO">Created download root directory: C:\Users\luisg_0qtm\AppData\Local\robocorp\webdrivers</msg>
+<msg timestamp="20220705 11:18:37.868" level="INFO">Created symlink directory: C:\Users\luisg_0qtm\AppData\Local\robocorp\webdrivers</msg>
+<msg timestamp="20220705 11:18:37.869" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20220705 11:18:39.230" level="INFO">Created Chrome browser with arguments: --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20220705 11:18:39.231" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;True&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20220705 11:18:39.231" level="INFO">Opening url 'https://robotsparebinindustries.com/#/robot-order'</msg>
+<status status="PASS" starttime="20220705 11:18:37.847" endtime="20220705 11:18:40.217"/>
 </kw>
-<kw name="Screenshot" library="RPA.Browser">
-<arg>id:robot-preview-image</arg>
-<arg>${OUTPUT_DIR}${/}robotImages${/}robot100.png</arg>
-<doc>Capture page and/or element screenshot.</doc>
-<status status="PASS" starttime="20220702 12:47:16.083" endtime="20220702 12:47:16.332"/>
+<kw name="Wait Until Page Contains Element" library="RPA.Browser.Selenium">
+<arg>id:root</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220705 11:18:40.217" endtime="20220705 11:18:40.234"/>
 </kw>
-<kw name="Screenshot" library="RPA.Browser">
-<arg>id:robot-preview-image</arg>
-<arg>${OUTPUT_DIR}${/}robotImages${/}robot200.png</arg>
-<doc>Capture page and/or element screenshot.</doc>
-<status status="PASS" starttime="20220702 12:49:03.222" endtime="20220702 12:49:03.436"/>
+<status status="PASS" starttime="20220705 11:18:37.845" endtime="20220705 11:18:40.234"/>
 </kw>
-<status status="PASS" starttime="20220702 12:45:44.713" endtime="20220702 12:53:06.258"/>
+<kw name="Get CSV URL">
+<var>${orders_csv_url}</var>
+<kw name="Add heading" library="RPA.Dialogs">
+<arg>Provide Orders .csv URL</arg>
+<doc>Add a centered heading text element</doc>
+<status status="PASS" starttime="20220705 11:18:40.236" endtime="20220705 11:18:40.236"/>
 </kw>
-<status status="PASS" starttime="20220702 12:45:44.712" endtime="20220702 12:53:06.258"/>
+<kw name="Add text input" library="RPA.Dialogs">
+<arg>name=url_input</arg>
+<arg>label=Orders .csv URL</arg>
+<arg>placeholder=Please provide the orders .csv URL</arg>
+<arg>rows=1</arg>
+<tag>input</tag>
+<doc>Add a text input element</doc>
+<status status="PASS" starttime="20220705 11:18:40.237" endtime="20220705 11:18:40.237"/>
+</kw>
+<kw name="Run dialog" library="RPA.Dialogs">
+<var>${result}</var>
+<tag>dialog</tag>
+<doc>Create a dialog from all the defined elements and block
+until the user has handled it.</doc>
+<msg timestamp="20220705 11:18:40.238" level="INFO">Protecting keyword: RPA.Dialogs.Run dialog</msg>
+<msg timestamp="20220705 11:19:12.733" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="FAIL" starttime="20220705 11:18:40.238" endtime="20220705 11:19:12.732"/>
+</kw>
+<return>
+<value>${result.url_input}</value>
+<status status="NOT RUN" starttime="20220705 11:19:12.733" endtime="20220705 11:19:12.733"/>
+</return>
+<status status="FAIL" starttime="20220705 11:18:40.235" endtime="20220705 11:19:12.734"/>
+</kw>
+<kw name="Get orders">
+<var>${orders}</var>
+<arg>${orders_csv_url}</arg>
+<status status="NOT RUN" starttime="20220705 11:19:12.736" endtime="20220705 11:19:12.736"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{orders}</value>
+<iter>
+<var name="${row}"/>
+<kw name="Close the annoying modal">
+<status status="NOT RUN" starttime="20220705 11:19:12.737" endtime="20220705 11:19:12.737"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<status status="NOT RUN" starttime="20220705 11:19:12.737" endtime="20220705 11:19:12.737"/>
+</kw>
+<kw name="Preview the robot">
+<status status="NOT RUN" starttime="20220705 11:19:12.737" endtime="20220705 11:19:12.737"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>0ms</arg>
+<arg>Submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" starttime="20220705 11:19:12.738" endtime="20220705 11:19:12.738"/>
+</kw>
+<status status="NOT RUN" starttime="20220705 11:19:12.737" endtime="20220705 11:19:12.738"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Refresh the website and re-fill the form">
+<arg>${row}</arg>
+<status status="NOT RUN" starttime="20220705 11:19:12.738" endtime="20220705 11:19:12.738"/>
+</kw>
+<kw name="Submit the order">
+<status status="NOT RUN" starttime="20220705 11:19:12.738" endtime="20220705 11:19:12.738"/>
+</kw>
+<status status="NOT RUN" starttime="20220705 11:19:12.738" endtime="20220705 11:19:12.738"/>
+</branch>
+<status status="NOT RUN" starttime="20220705 11:19:12.737" endtime="20220705 11:19:12.739"/>
+</try>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}[Order number]</arg>
+<status status="NOT RUN" starttime="20220705 11:19:12.740" endtime="20220705 11:19:12.740"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<status status="NOT RUN" starttime="20220705 11:19:12.740" endtime="20220705 11:19:12.740"/>
+</kw>
+<kw name="Embed the robot screenshot to the receipt PDF file">
+<arg>${pdf}</arg>
+<arg>${screenshot}</arg>
+<arg>${row}[Order number]</arg>
+<status status="NOT RUN" starttime="20220705 11:19:12.740" endtime="20220705 11:19:12.740"/>
+</kw>
+<kw name="Go to order another robot">
+<status status="NOT RUN" starttime="20220705 11:19:12.740" endtime="20220705 11:19:12.740"/>
+</kw>
+<status status="NOT RUN" starttime="20220705 11:19:12.737" endtime="20220705 11:19:12.741"/>
+</iter>
+<status status="NOT RUN" starttime="20220705 11:19:12.737" endtime="20220705 11:19:12.741"/>
+</for>
+<kw name="Create a ZIP file of the receipts">
+<status status="NOT RUN" starttime="20220705 11:19:12.741" endtime="20220705 11:19:12.741"/>
+</kw>
+<kw name="Close Browser" type="TEARDOWN">
+<kw name="Close All Browsers" library="RPA.Browser.Selenium">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20220705 11:19:12.742" endtime="20220705 11:19:14.857"/>
+</kw>
+<status status="PASS" starttime="20220705 11:19:12.742" endtime="20220705 11:19:14.857"/>
+</kw>
+<status status="FAIL" starttime="20220705 11:18:37.844" endtime="20220705 11:19:14.859">Aborted by user</status>
 </test>
-<status status="PASS" starttime="20220702 12:45:44.683" endtime="20220702 12:53:06.261"/>
+<doc>Orders robots from RobotSpareBin Industries Inc.
+Saves the order HTML receipt as a PDF file.
+Saves the screenshot of the ordered robot.
+Embeds the screenshot of the robot to the PDF receipt.
+Creates ZIP archive of the receipts and the images.</doc>
+<status status="FAIL" starttime="20220705 11:18:36.711" endtime="20220705 11:19:14.860"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tasks</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Robot Interactive Console">Robot Interactive Console</stat>
+<stat pass="0" fail="1" skip="0" id="s1" name="Tasks">Tasks</stat>
 </suite>
 </statistics>
 <errors>

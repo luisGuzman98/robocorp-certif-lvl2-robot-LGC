@@ -11,7 +11,6 @@ The robot:
 
 This robot:
 
-- At the devdata folder, the user must update the RPA_SECRET_FILE value according to their username and where the decide to locate the present repository.
 - Includes all the necessary dependencies and initialization commands (`conda.yaml`).
 
 ## Learning materials
