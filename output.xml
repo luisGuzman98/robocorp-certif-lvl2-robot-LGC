@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.7.5 on win32)" generated="20220702 12:45:44.682" rpa="false" schemaversion="3">
+<suite id="s1" name="Robot Interactive Console" source="c:\Users\luisg_0qtm\.vscode\extensions\robocorp.robotframework-lsp-0.48.2\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
+<test id="s1-t1" name="Default Task/Test" line="5">
+<kw name="Interpreter Main Loop" library="MainLoop">
+<kw name="Open Chrome Browser" library="RPA.Browser">
+<arg>https://robotsparebinindustries.com/#/robot-order</arg>
+<doc>Open Chrome browser. See ``Open Available Browser`` for
+descriptions of arguments.</doc>
+<status status="PASS" starttime="20220702 12:46:12.470" endtime="20220702 12:46:15.312"/>
+</kw>
+<kw name="Screenshot" library="RPA.Browser">
+<arg>id:robot-preview-image</arg>
+<arg>${OUTPUT_DIR}${/}robotImages${/}robot100.png</arg>
+<doc>Capture page and/or element screenshot.</doc>
+<status status="PASS" starttime="20220702 12:47:16.083" endtime="20220702 12:47:16.332"/>
+</kw>
+<kw name="Screenshot" library="RPA.Browser">
+<arg>id:robot-preview-image</arg>
+<arg>${OUTPUT_DIR}${/}robotImages${/}robot200.png</arg>
+<doc>Capture page and/or element screenshot.</doc>
+<status status="PASS" starttime="20220702 12:49:03.222" endtime="20220702 12:49:03.436"/>
+</kw>
+<status status="PASS" starttime="20220702 12:45:44.713" endtime="20220702 12:53:06.258"/>
+</kw>
+<status status="PASS" starttime="20220702 12:45:44.712" endtime="20220702 12:53:06.258"/>
+</test>
+<status status="PASS" starttime="20220702 12:45:44.683" endtime="20220702 12:53:06.261"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Robot Interactive Console">Robot Interactive Console</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
