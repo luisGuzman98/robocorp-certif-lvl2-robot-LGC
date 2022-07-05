@@ -50,8 +50,8 @@ Close the annoying modal
     ...    css:#root > div > div.modal > div > div > div > div > div > button.btn.btn-warning
 
     #If the yep button from the modal is visible
-    ${IsElementVisible}=    Is Element Visible    ${yep_button_css_selector}
-    IF    ${IsElementVisible}
+    ${is_element_visible}=    Is Element Visible    ${yep_button_css_selector}
+    IF    ${is_element_visible}
         Click Button    ${yep_button_css_selector}
     ELSE
         Log    No modal visible to close.
